@@ -74,25 +74,32 @@ class LinkedList {
     }
     return arr;
   }
+  // reverse() {
+  //   if (!this.head.next) return this.head;
+  //   let first = this.head;
+  //   this.tail = this.head;
+  //   let second = first.next;
+  //   while (second) {
+  //     let temp = second.next;
+  //     second.next = first;
+  //     first = second;
+  //     second = temp;
+  //   }
+  //   this.head.next = null;
+  //   this.head = first;
+  //   return this;
+  // }
   reverse() {
-    if (!this.head.next) return this.head;
-
-    let first = this.head;
-    this.tail = this.head;
-    let second = first.next;
-    while (second) {
-      let temp = second.next;
-      //   console.log("temp ", temp);
-      //   console.log(" second  ", second);
-      second.next = first;
-      first = second;
-      //   console.log("first is ", first);
-      second = temp;
-      console.log("on first itreation  ", first, second, temp);
+    let prev = null,
+      next = null;
+    while (this.head !== null) {
+      next = this.head.next;
+      this.head.next = prev;
+      prev = this.head;
+      this.head = next;
     }
-    this.head.next = null;
-    this.head = first;
-    return this;
+    this.head = prev;
+    return prev;
   }
 }
 
