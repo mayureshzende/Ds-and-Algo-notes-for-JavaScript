@@ -8,9 +8,11 @@ function mergeSort(array) {
   let mid = Math.floor(array.length / 2);
   let left = array.slice(0, mid);
   let right = array.slice(mid);
-  //   console.log(left, right);
-
-  return merge(mergeSort(left), mergeSort(right));
+  console.log(left, right);
+  let ls = mergeSort(left);
+  let rs = mergeSort(right);
+  console.log(" sort ", ls, rs);
+  return merge(ls, rs);
 }
 
 function merge(left, right) {
@@ -26,7 +28,7 @@ function merge(left, right) {
       rightPointer++;
     }
   }
-  console.log(left, right);
+  //   console.log(left, right);
   return res.concat(left.slice(leftPointer), right.slice(rightPointer));
 }
 
